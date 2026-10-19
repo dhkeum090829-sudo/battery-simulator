@@ -82,11 +82,9 @@ with tab1:
             find_optimal_condition()
             st.rerun()
             
-        # 직접 입력(Number Input)과 슬라이더 동기화
         charge_time = st.number_input("충전 시간 (초)", min_value=2, max_value=60, value=int(st.session_state.charge_val), step=1, key="num_c1")
         rest_time = st.number_input("휴지 시간 (초)", min_value=1, max_value=30, value=int(st.session_state.rest_val), step=1, key="num_r1")
         
-        # 세션 상태 갱신
         st.session_state.charge_val = charge_time
         st.session_state.rest_val = rest_time
 
@@ -129,7 +127,6 @@ with tab2:
             find_optimal_condition()
             st.rerun()
             
-        # 탭2 전용 직접 입력 박스
         current_c = st.number_input("정밀 검증 충전 시간 (초)", min_value=2, max_value=60, value=int(st.session_state.charge_val), step=1, key="num_c2")
         current_r = st.number_input("정밀 검증 휴지 시간 (초)", min_value=1, max_value=30, value=int(st.session_state.rest_val), step=1, key="num_r2")
         
@@ -185,4 +182,13 @@ with tab2:
                 axes[1].plot(t_cc, plating_cc, label="Baseline (CC)", color="#d62728", linewidth=2)
                 axes[1].plot(t_pulse, plating_pulse, label=f"Proposed ({current_c}s/{current_r}s)", color="#1f77b4", linewidth=2)
                 axes[1].set_title("True Lithium Plating (DFN Model)", fontsize=14, fontweight='bold')
-            ... # (이하 생략 없이 온전한 코드 제공)
+                axes[1].set_xlabel("Time [s]")
+                axes[1].set_ylabel("Lithium Plating [Ah]")
+                axes[1].legend()
+                axes[1].grid(True, linestyle='--')
+
+                st.pyplot(fig2)
+                st.success("정밀 물리 시뮬레이션 연산이 완료되었습니다. 결과를 확인하십시오.")
+                
+            except Exception as e:
+                st.error(f"시뮬레이션 연산 중 오류가 발생했습니다: {e}")
