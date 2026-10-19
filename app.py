@@ -69,7 +69,7 @@ st.set_page_config(page_title="덴드라이트 최적화 시뮬레이션", page_
 
 st.markdown("""
     <div style='background-color:#1E1E1E; padding:20px; border-radius:10px;'>
-        <h1 style='color:#00D4FF; text-align:center; font-family:sans-serif;'>🔋 초고속 충전 배터리 덴드라이트 억제 시뮬레이터</h1>
+        <h1 style='color:#00D4FF; text-align:center; font-family:sans-serif;'> 배터리 덴드라이트 억제 시뮬레이션</h1>
         <p style='color:#E0E0E0; text-align:center; font-size:18px;'>적응형 펄스 제어(Adaptive Pulse Control)를 통한 화재 위험 실시간 모니터링</p>
     </div>
     <br>
