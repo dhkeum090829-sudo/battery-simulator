@@ -139,4 +139,5 @@ with col2:
     if np.max(plating_proposed) < 0.003:
         st.success(f"✅ **[안전]** 덴드라이트 성장이 완벽히 억제되고 있습니다. (현재 충전 효율: {efficiency}%)")
     else:
-        st.error(f"⚠️ **[경고]** 리튬 석출량이 안전 한계선을 초과했습니다! 휴지 시간을 늘려주세요. (현재 충전 효율: {efficiency}%)")를 충전에 사용 중입니다.")
+        else:
+        st.error(f"⚠️ **[경고]** 리튬 석출량이 안전 한계선을 초과했습니다! 휴지 시간을 늘려주세요. (현재 충전 효율: {efficiency}%)")
