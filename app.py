@@ -65,7 +65,7 @@ def find_optimal_condition():
 # ==========================================
 # 3. 세련된 대시보드 UI (Streamlit 구성)
 # ==========================================
-st.set_page_config(page_title="배터리 덴드라이트 최적화 시뮬레이터", page_icon="🔋", layout="wide")
+st.set_page_config(page_title="덴드라이트 최적화 시뮬레이",션 page_icon="🔋", layout="wide")
 
 st.markdown("""
     <div style='background-color:#1E1E1E; padding:20px; border-radius:10px;'>
@@ -75,10 +75,10 @@ st.markdown("""
     <br>
 """, unsafe_allow_html=True)
 
-st.sidebar.markdown("## ⚙️ 제어 패널")
-st.sidebar.markdown("충전과 휴지 비율을 조절하여 가장 안전한 조건을 찾아보세요.")
+st.sidebar.markdown("## 제어 패널")
+st.sidebar.markdown("충전과 휴지 비율을 조절.")
 
-if st.sidebar.button("✨ 최적 효율 자동 찾기", type="primary", use_container_width=True):
+if st.sidebar.button(" 최적 효율 자동 찾기", type="primary", use_container_width=True):
     find_optimal_condition()
 
 st.sidebar.markdown("---")
@@ -86,9 +86,9 @@ st.sidebar.markdown("---")
 def update_sliders():
     pass
 
-charge_time = st.sidebar.slider("⚡ 충전 시간 (초) - 통전 구간", min_value=2, max_value=60, 
+charge_time = st.sidebar.slider(" 충전 시간 (초) - 통전 구간", min_value=2, max_value=60, 
                                 value=st.session_state.charge_val, step=1, key="charge_val", on_change=update_sliders)
-rest_time = st.sidebar.slider("⏳ 휴지 시간 (초) - 이온 회복 구간", min_value=1, max_value=30, 
+rest_time = st.sidebar.slider(" 휴지 시간 (초) - 이온 회복 구간", min_value=1, max_value=30, 
                               value=st.session_state.rest_val, step=1, key="rest_val", on_change=update_sliders)
 
 # ==========================================
@@ -123,6 +123,6 @@ with col2:
     # 하단 상태창 표시 (들여쓰기 완벽 수정됨)
     efficiency = int((charge_time / (charge_time + rest_time)) * 100)
     if np.max(plating_proposed) < 0.003:
-        st.success(f"✅ **[안전]** 덴드라이트 성장이 완벽히 억제되고 있습니다. (현재 충전 효율: {efficiency}%)")
+        st.success(f"안전. (현재 충전 효율: {efficiency}%)")
     else:
-        st.error(f"⚠️ **[경고]** 리튬 석출량이 안전 한계선을 초과했습니다! 휴지 시간을 늘려주세요. (현재 충전 효율: {efficiency}%)")
+        st.error(f" 리튬 석출량 안전 한계선 초과! 휴지 시간 부족. (현재 충전 효율: {efficiency}%)")
