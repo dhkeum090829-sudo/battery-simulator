@@ -65,7 +65,7 @@ def find_optimal_condition():
 # ==========================================
 # 3. 세련된 대시보드 UI (Streamlit 구성)
 # ==========================================
-st.set_page_config(page_title="덴드라이트 최적화 시뮬레이",션 page_icon="🔋", layout="wide")
+st.set_page_config(page_title="덴드라이트 최적화 시뮬레이션", page_icon="🔋", layout="wide")
 
 st.markdown("""
     <div style='background-color:#1E1E1E; padding:20px; border-radius:10px;'>
