@@ -1,4 +1,6 @@
-streamlit
-numpy
-matplotlib
-pybamm
+streamlit>=1.50,<2
+numpy>=2,<3
+pandas>=2.2,<4
+scipy>=1.14,<2
+plotly>=6,<8
+pybamm>=26.10,<27
