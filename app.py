@@ -15,6 +15,8 @@ from battery_model import (
     equivalent_lithium_thickness_um,
 )
 
+APP_ROOT = Path(__file__).resolve().parent
+
 st.set_page_config(page_title="배터리 충전 연구실", page_icon="🔋", layout="wide")
 st.markdown(
     """
@@ -221,7 +223,7 @@ with tabs[0]:
                 f"concentration_{m}.csv", pd.DataFrame(r.profiles).to_csv(index=False)
             )
         archive.writestr(
-            "MODEL_NOTES.md", Path("MODEL_NOTES.md").read_text(encoding="utf-8")
+            "MODEL_NOTES.md", (APP_ROOT / "MODEL_NOTES.md").read_text(encoding="utf-8")
         )
     bcol.download_button(
         "설정·결과·농도 분포 ZIP",
@@ -331,7 +333,7 @@ with tabs[1]:
 
 with tabs[2]:
     st.subheader("어디까지 계산했는가")
-    st.markdown(Path("MODEL_NOTES.md").read_text(encoding="utf-8"))
+    st.markdown((APP_ROOT / "MODEL_NOTES.md").read_text(encoding="utf-8"))
     st.subheader("보존식 확인")
     check = pd.DataFrame(
         [

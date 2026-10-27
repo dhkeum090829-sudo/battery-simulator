@@ -32,3 +32,13 @@ def test_optimizer_runs_and_invalidates_stale_results(monkeypatch):
     next(x for x in at.button if x.label == "조건 적용 · 5가지 방식 비교").click().run()
     assert not at.exception
     assert not any(x.key == "optimization_validate" for x in at.button)
+
+
+def test_app_reads_supporting_files_independent_of_working_directory(
+    monkeypatch, tmp_path
+):
+    root = Path(__file__).resolve().parents[1]
+    monkeypatch.chdir(tmp_path)
+    at = AppTest.from_file(str(root / "app.py"), default_timeout=60).run()
+    assert not at.exception
+    assert len(at.tabs) == 5
