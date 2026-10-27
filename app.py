@@ -19,7 +19,7 @@ st.set_page_config(page_title="배터리 충전 연구실", page_icon="🔋", la
 st.markdown(
     """
 <style>
-.block-container {padding-top:2rem;max-width:1500px}
+.block-container {padding-top:4rem;max-width:1500px}
 [data-testid="stMetric"] {background:rgba(110,150,180,.07);padding:16px;border-radius:12px}
 </style>""",
     unsafe_allow_html=True,
@@ -106,7 +106,13 @@ with st.spinner("확산·전극 반응·열·피드백 제어를 계산하고 �
 summary = pd.DataFrame([r.summary() for r in results.values()])
 colors = dict(zip(METHODS, ["#ef6c63", "#4ba3d3", "#bd93e8", "#e6aa46", "#23b59f"]))
 tabs = st.tabs(
-    ["비교 대시보드", "작동 과정", "가정·민감도·수치 검증", "PyBaMM 독립 비교"]
+    [
+        "비교 대시보드",
+        "작동 과정",
+        "가정·민감도·수치 검증",
+        "PyBaMM 독립 비교",
+        "최적 조건 탐색",
+    ]
 )
 
 
@@ -430,3 +436,9 @@ with tabs[3]:
         st.caption(
             "host SOC는 음극 고체의 평균 화학량론을 신품 0~100% 구간으로 정규화한 값입니다. 단순화 모델의 SOC와 모델 정의가 다릅니다."
         )
+
+
+with tabs[4]:
+    from optimization_ui import render_optimizer
+
+    render_optimizer(config)
